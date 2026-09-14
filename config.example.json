@@ -1,71 +1,21 @@
 {
-  // ===== TG Bot 一键转发配置 =====
-  // 复制成 config.json 再改；本文件支持整行 // 注释。
-  // 也可以不写 token，改用环境变量 TG_BOT_TOKEN。
-
   "bot_token": "在这里粘贴 @BotFather 给的 token",
 
-  // 能使用 /status /pause /reload 等管理命令的人（你自己的 user_id）
-  // 不知道自己的 id？把机器人拉进任意聊天，发 /id 就会告诉你。
-  "admins": [],
+  "admins": [123456789],
+  "notify_chat": null,
 
-  // 可选：日志级别 DEBUG / INFO / WARNING，日志文件，代理，状态文件位置
+  "rules_file": "/etc/tgfwd/rules.json",
   "log_level": "INFO",
-  // "log_file": "tgforward.log",
-  // "proxy": "http://127.0.0.1:7890",
-  // "state_file": "state.json",
+  "log_file": null,
+  "proxy": null,
 
-  // 所有规则共用的默认值，单条规则里写同名字段可以覆盖
-  "default": {
-    // copy = 搬运，不显示「转发自」；forward = 原生转发，显示来源
-    "mode": "copy",
-    // 每发一条之间的间隔秒数，防止触发 Telegram 限流
-    "send_delay": 0.5,
-    // 静默发送（对方不响铃）
-    "silent": false,
-    // 源消息被编辑时：ignore 忽略 / edit 同步修改已发的那条 / resend 重新发一条
-    "on_edit": "ignore"
-  },
+  "snat_mode": "auto",
+  "snat_ip": null,
+  "iface": null,
 
-  "rules": [
-    {
-      "name": "示例：某频道搬到我的频道",
-      "enabled": true,
-
-      // 从哪搬：chat_id（频道一般是 -100 开头）或 @公开用户名，可以写多个
-      "from": [-1001234567890],
-
-      // 搬到哪：机器人必须是这里的管理员且有发消息权限
-      "to": [-1009876543210],
-
-      // --- 以下全部可选，不需要就整行删掉 ---
-
-      // 只搬这些类型；留空表示全都搬
-      // 可选值：text photo video animation document audio voice video_note
-      //        sticker poll dice contact location media_group
-      "allow_types": [],
-      // 这些类型一律不搬
-      "block_types": ["sticker", "dice"],
-
-      // 命中任意一个才搬（留空=不限制）；以 re: 开头表示正则
-      "include_keywords": [],
-      // 命中任意一个就丢弃
-      "exclude_keywords": ["广告", "招商", "re:加\\s*微信"],
-
-      // 文案清洗
-      "remove_links": false,
-      "remove_usernames": false,
-      "remove_hashtags": false,
-
-      // 关键词替换，regex 为 true 时 from 按正则处理
-      "replace": [
-        { "from": "原频道名", "to": "我的频道" },
-        { "from": "t\\.me/\\w+", "to": "", "regex": true }
-      ],
-
-      // 在正文前后各加一段（小尾巴）
-      "header": "",
-      "footer": ""
-    }
-  ]
+  "traffic_interval": 60,
+  "health_interval": 60,
+  "health_fails": 3,
+  "dns_interval": 300,
+  "startup_notify": true
 }
