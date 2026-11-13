@@ -1,0 +1,16 @@
+# 含 bot token，绝不能提交
+config.json
+config.*.json
+!config.example.json
+
+# 运行时数据
+rules.json
+rules.json.tmp
+state.json
+*.log
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store

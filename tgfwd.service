@@ -1,0 +1,20 @@
+[Unit]
+Description=tgfwd - TG bot 管理的端口转发
+Documentation=https://github.com/doudoudoubao/TGdaili
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=__PYTHON__ __INSTALL_DIR__/tgfwd.py --config __CONFIG_DIR__/config.json
+Restart=always
+RestartSec=10
+# 需要改 iptables，必须有 NET_ADMIN
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
+StandardOutput=journal
+StandardError=journal
+# 国内机器需要代理才能连 Telegram 时，取消注释并改成自己的
+# Environment=HTTPS_PROXY=http://127.0.0.1:7890
+
+[Install]
+WantedBy=multi-user.target

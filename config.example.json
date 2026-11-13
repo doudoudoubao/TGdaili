@@ -1,0 +1,21 @@
+{
+  "bot_token": "在这里粘贴 @BotFather 给的 token",
+
+  "admins": [123456789],
+  "notify_chat": null,
+
+  "rules_file": "/etc/tgfwd/rules.json",
+  "log_level": "INFO",
+  "log_file": null,
+  "proxy": null,
+
+  "snat_mode": "auto",
+  "snat_ip": null,
+  "iface": null,
+
+  "traffic_interval": 60,
+  "health_interval": 60,
+  "health_fails": 3,
+  "dns_interval": 300,
+  "startup_notify": true
+}
